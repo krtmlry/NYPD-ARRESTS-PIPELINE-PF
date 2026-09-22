@@ -1,0 +1,89 @@
+Diagram tool: https://dbdiagram.io/
+
+Table fact.fact_nypd_arrests {
+  arrest_key_id id [primary key]
+  date_id int
+  ofns_desc_id int
+  law_cat_cd_id int
+  arrest_boro_id int
+  arrest_precinct_id int
+  jurisdiction_code_id int
+  age_group_id int
+  perp_sex_id int
+  perp_race_id int
+  latitude double
+  longitude double
+  sched_id bigint
+  loaded_at timestamp
+}
+
+Table marts.dim_date {
+  date_id int [primary key]
+  date date
+  year int
+  month int
+  day int
+  quarter int
+  month_name varchar
+  month_name_abb varchar
+  dow int
+  dow_name varchar
+  dow_name_abb varchar
+}
+
+Table marts.dim_ofns_desc {
+  ofns_desc_id int [primary key]
+  ofns_desc varchar
+  major_felony bool
+}
+
+Table marts.dim_law_cat_cd {
+  law_cat_cd_id int [primary key]
+  law_cat_cd varchar
+  law_cat_cd_desc varchar
+}
+
+Table marts.dim_arrest_boro {
+  arrest_boro_id int [primary key]
+  arrest_boro varchar
+  arrest_boro_desc varchar
+}
+
+Table marts.dim_arrest_precinct {
+  arrest_precinct_id int [primary key]
+  arrest_precinct int
+  precinct_name varchar
+  precinct_boro varchar
+}
+
+Table marts.dim_jurisdiction_code {
+  jurisdiction_code_id int [primary key]
+  jurisdiction_code varchar
+  jurisdiction_code_desc varchar
+}
+
+Table marts.dim_age_group {
+  age_group_id int [primary key]
+  age_group varchar
+}
+
+Table marts.dim_perp_race {
+  perp_race_id int [primary key]
+  perp_race varchar
+}
+
+Table marts.dim_perp_sex {
+  perp_sex_id int [primary key]
+  perp_sex varchar
+  perp_sex_desc varchar
+}
+
+Ref: fact.fact_nypd_arrests.date_id > marts.dim_date.date_id
+Ref: fact.fact_nypd_arrests.ofns_desc_id > marts.dim_ofns_desc.ofns_desc_id
+Ref: fact.fact_nypd_arrests.law_cat_cd_id > marts.dim_law_cat_cd.law_cat_cd_id
+Ref: fact.fact_nypd_arrests.arrest_boro_id > marts.dim_arrest_boro.arrest_boro_id
+Ref: fact.fact_nypd_arrests.arrest_precinct_id > marts.dim_arrest_precinct.arrest_precinct_id
+Ref: fact.fact_nypd_arrests.jurisdiction_code_id > marts.dim_jurisdiction_code.jurisdiction_code_id
+Ref: fact.fact_nypd_arrests.age_group_id > marts.dim_age_group.age_group_id
+Ref: fact.fact_nypd_arrests.perp_sex_id > marts.dim_perp_sex.perp_sex_id
+Ref: fact.fact_nypd_arrests.perp_race_id > marts.dim_perp_race.perp_race_id

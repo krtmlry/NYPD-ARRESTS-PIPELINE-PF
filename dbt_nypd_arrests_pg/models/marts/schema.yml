@@ -1,0 +1,87 @@
+
+version: 2
+
+models:
+  - name: dim_age_group
+    description: "Age group dimension"
+    columns:
+      - name: age_group_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_arrest_boro
+    description: "Arrest Borough dimension"
+    columns:
+      - name: arrest_boro_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: "Date dimension"
+    columns:
+      - name: date_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_jurisdiction_code
+    description: "Jurisdiction code dimension"
+    columns:
+      - name: jurisdiction_code_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_law_cat_cd
+    description: "Level of Offense dimension"
+    columns:
+      - name: law_cat_cd_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_ofns_desc_ref
+    description: "Offense description reference"
+    columns:
+      - name: ref_id
+        description: "Reference ID, not unique"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_ofns_desc
+    description: "Offense description clean table"
+    columns:
+      - name: ofns_desc_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_perp_race
+    description: "Perpetrator race"
+    columns:
+      - name: perp_race_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_perp_sex
+    description: "Perpetrator sex or gender"
+    columns:
+      - name: perp_sex_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: nypd_arrest_records_dn
+    description: "Denormalized table of clean arrest records."

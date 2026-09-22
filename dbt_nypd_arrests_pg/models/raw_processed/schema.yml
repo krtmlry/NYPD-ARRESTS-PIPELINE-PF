@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: processed_raw_arrests
+    description: "All processed raw arrest data will be loaded to this table. PG table raw.raw_nypd_arrests is designed as a landing zone and will always be kept empty after a complete ELT cycle."

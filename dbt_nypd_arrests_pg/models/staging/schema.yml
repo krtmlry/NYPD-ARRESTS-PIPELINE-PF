@@ -1,0 +1,13 @@
+version: 2
+
+models:
+ - name: stg_dim_age_group
+ - name: stg_dim_arrest_boro
+ - name: stg_dim_arrest_precinct
+ - name: stg_dim_jurisdiction_code
+ - name: stg_dim_law_cat_cd
+ - name: stg_dim_ofns_desc_ref
+ - name: stg_dim_ofns_desc
+ - name: stg_dim_perp_race
+ - name: stg_dim_perp_sex
+ - name: stg_nypd_arrests

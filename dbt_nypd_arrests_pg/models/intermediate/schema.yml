@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: int_type_casting
+    description: "Mapping of ofns_desc values using marts.dim_ofns_desc_ref and casting data types."
+
+  - name: int_fact_nypd_arrests
+    description: "Data cleaning of raw arrest records is done in this model."
+    columns:
+      - name: arrest_key
+        tests:
+          - not_null
+      - name: date_id
+        tests:
+          - not_null
+      - name: ofns_desc_id
+        tests:
+          - not_null
+      - name: law_cat_cd_id
+        tests:
+          - not_null
+      - name: arrest_boro_id
+        tests:
+          - not_null
+      - name: arrest_precinct_id
+        tests:
+          - not_null
+      - name: jurisdiction_code_id
+        tests:
+          - not_null
+      - name: age_group_id
+        tests:
+          - not_null
+      - name: perp_sex_id
+        tests:
+          - not_null
+      - name: perp_race_id
+        tests:
+          - not_null
+      - name: latitude
+        tests:
+          - not_null
+      - name: longitude
+        tests:
+          - not_null
+      - name: sched_id
+        tests:
+          - not_null
+      - name: loaded_at
+        tests:
+          - not_null

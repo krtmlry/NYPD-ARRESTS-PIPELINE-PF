@@ -1,0 +1,32 @@
+sources:
+  - name: source_raw_nypd
+    database: nypd_arrests_db
+    schema: raw
+    tables:
+      - name: raw_dim_age_group
+      - name: raw_dim_arrest_boro
+      - name: raw_dim_arrest_precinct
+      - name: raw_dim_date
+      - name: raw_dim_jurisdiction_code
+      - name: raw_dim_law_cat_cd
+      - name: raw_dim_ofns_desc
+      - name: raw_dim_ofns_desc_ref
+      - name: raw_dim_perp_race
+      - name: raw_dim_perp_sex
+      - name: raw_nypd_arrests
+
+  - name: source_marts_dim
+    database: nypd_arrests_db
+    schema: marts
+    tables:
+      - name: dim_age_group
+      - name: dim_arrest_boro
+      - name: dim_arrest_precinct
+      - name: dim_date
+      - name: dim_jurisdiction_code
+      - name: dim_law_cat_cd
+      - name: dim_ofns_desc
+      - name: dim_ofns_desc_ref
+      - name: dim_perp_race
+      - name: dim_perp_sex
+      - name: nypd_arrests

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Secrets / local configuration
+.env
+.env.*
+!.env.sample
+config.toml
+
+# Temporarily ignored directories
+notebooks/
+data/
+sql/
+
+# dbt
+dbt_nypd_arrests_pg/target/
+dbt_nypd_arrests_pg/dbt_packages/
+dbt_nypd_arrests_pg/logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# zed related files
+.zed/
+ruff.toml
+
+logs/

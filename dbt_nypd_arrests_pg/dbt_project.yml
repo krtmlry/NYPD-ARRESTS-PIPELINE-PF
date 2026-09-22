@@ -1,0 +1,142 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dbt_nypd_arrests_pg'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dbt_postgres'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  dbt_nypd_arrests_pg:
+    # Config indicated by + and applies to all files under models/example/
+    staging:
+      +materialized: table
+      +schema: staging
+      +tags:
+        - staging
+      stg_dim_age_group:
+        +tags:
+          - dimension
+      stg_dim_arrest_boro:
+        +tags:
+          - dimension
+      stg_dim_arrest_precinct:
+        +tags:
+          - dimension
+      stg_dim_jurisdiction_code:
+        +tags:
+          - dimension
+      stg_dim_law_cat_cd:
+        +tags:
+          - dimension
+      stg_dim_ofns_desc_ref:
+        +tags:
+          - dimension
+      stg_dim_ofns_desc:
+        +tags:
+          - dimension
+      stg_dim_perp_race:
+        +tags:
+          - dimension
+      stg_dim_perp_sex:
+        +tags:
+          - dimension
+      stg_nypd_arrests:
+        +tags:
+          - stg_arrests
+
+    marts:
+      +materialized: table
+      +schema: marts
+      +tags: marts
+      dim_age_group:
+        +tags:
+          - marts
+      dim_arrest_boro:
+        +tags:
+          - marts
+      dim_arrest_precinct:
+        +tags:
+          - marts
+      dim_date:
+        +tags:
+          - marts
+      dim_jurisdiction_code:
+        +tags:
+          - marts
+      dim_law_cat_cd:
+        +tags:
+          - marts
+      dim_ofns_desc:
+        +tags:
+          - marts
+      dim_ofns_desc_ref:
+        +tags:
+          - marts
+      dim_perp_race:
+        +tags:
+          - marts
+      dim_perp_sex:
+        +tags:
+          - marts
+
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+      +tags: intermediate
+      int_fact_nypd_arrests:
+        +tags:
+          - int_fact_nypd
+      int_type_casting:
+        +tags:
+          - int_type_cast
+
+
+    fact:
+      +materialized: incremental
+      +schema: fact
+      +tags: fact
+      fact_nypd_arrests:
+        +tags:
+          - fact_nypd
+
+    analytics:
+      +materialized: incremental
+      +schema: analytics
+      +tags:
+        - analytics
+      nypd_arrests_dn:
+        +tags:
+          - nypd_dn
+
+    raw_processed:
+      +materialized: incremental
+      +schema: raw_processed
+      +tags:
+        - raw_proccessed_tag
+      processed_raw_arrests:
+        +tags:
+          - proc_raw_arr
